@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider     = "mysql"
+  relationMode = "foreignKeys"
+}
+
+enum Role {
+  cliente
+  administrador
+}
+
+enum StatusOrder {
+  Pendiente
+  Aprobado
+  Rechazado
+  Enviado
+  Entregado
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String   @unique
+  address   String
+  password  String
+  role      Role     @default(cliente)
+  createdAt DateTime @default(now())
+  orders    Order[]
+}
+
+model Product {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String
+  price        Decimal       @db.Decimal(10, 2)
+  image_url    String
+  status       Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  orderDetails OrderDetail[]
+}
+
+model Order {
+  id           String        @id @default(cuid())
+  user_id      String
+  user         User          @relation(fields: [user_id], references: [id])
+  status       StatusOrder   @default(Pendiente)
+  total        Decimal       @db.Decimal(10, 2)
+  createdAt    DateTime      @default(now())
+  orderDetails OrderDetail[]
+}
+
+model OrderDetail {
+  id         Int      @id @default(autoincrement())
+  order_id   String
+  product_id Int
+  quantity   Int
+  unit_price Decimal  @db.Decimal(10, 2)
+  subtotal   Decimal  @db.Decimal(10, 2)
+  createdAt  DateTime @default(now())
+  order      Order    @relation(fields: [order_id], references: [id])
+  product    Product  @relation(fields: [product_id], references: [id])
+}

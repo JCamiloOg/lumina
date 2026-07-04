@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+/* Custom Scrollbar Styles */
+html {
+  scrollbar-color: rgba(139, 92, 246, 0.3) #090D16;
+  scrollbar-width: thin;
+}
+
+/* Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090D16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.25);
+  border-radius: 9999px;
+  border: 2px solid #090D16;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.6);
+}
+
