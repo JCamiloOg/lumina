@@ -100,6 +100,21 @@ cd lumina
 
 ---
 
+## 🌐 Dominios de Producción
+
+Los entornos de producción de la aplicación están configurados en los siguientes dominios:
+
+| Servicio                    | Descripción                                                         | URL de Producción                             |
+| :-------------------------- | :------------------------------------------------------------------ | :-------------------------------------------- |
+| **Cliente (Frontend)**      | Aplicación React principal para la tienda y panel de administración | `https://lumina-client-ashy.vercel.app`       |
+| **API (Backend)**           | Servidor de base de datos, lógica de negocio y endpoints (Express)  | `https://lumina-server-lime.vercel.app/`      |
+| **Documentación de la API** | Swagger UI para exploración e interactividad con los endpoints      | `hhttps://lumina-server-lime.vercel.app/docs` |
+
+> [!IMPORTANT]
+> Recuerda configurar las variables de entorno correspondientes en producción (`CORS_ORIGIN` en el backend para permitir peticiones desde el frontend, y `VITE_API_URL` en el frontend apuntando al backend).
+
+---
+
 ## 🔑 Cuentas de Prueba
 
 Al ejecutar `npx prisma db seed`, la base de datos se poblará con las siguientes cuentas de prueba:
