@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CartContext from "../../shared/context/cart.context";
 import type { Product } from "../../@types/product";
 import { Toast } from "../../features/landing/components/alerts";
+import { useUser } from "../../shared/hooks/useUserContext";
 
 
 export default function CartProvider({ children }: { children: React.ReactNode }) {
@@ -11,12 +12,23 @@ export default function CartProvider({ children }: { children: React.ReactNode }
     });
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
+    const { user } = useUser();
+
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
     const addToCart = (product: (Product)) => {
+        if (!user) {
+            Toast.fire({
+                icon: "error",
+                title: "Debes iniciar sesión para añadir productos al carrito",
+                timer: 2000
+            });
+            return;
+        }
+
         const isExist = cart.find((item) => item.id === product.id);
         if (isExist) {
             setCart(cart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));

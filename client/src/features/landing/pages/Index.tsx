@@ -64,8 +64,8 @@ export default function IndexPage() {
             )
           }
           {
-            products && products.length > 0 ? products.map((product) => (
-              <ProductCard product={product} />
+            products && products.length > 0 ? products.map((product, idx) => (
+              <ProductCard product={product} key={idx} />
             )) : (
               !isPending && (
                 <div className="col-span-full py-16 text-center">
