@@ -75,13 +75,15 @@ Iniciamos el servidor tanto en /client como en /server
 npm run dev
 ```
 ### Usuarios de prueba
-#### Admin
-`admin@example.com`
+| Rol | Correo | Contraseña |
+|------|---------|------------|
+| Administrador | admin@example.com | 123prueba |
+| Cliente | cliente@gmail.com | 123prueba |
 
-`prueba`
 
-#### Cliente
-`cliente@example.com`
+#### La documentación de la API en local la puedes encontrar en: 
 
-`prueba`
+```bash
+http://localhost:3000/docs
+```
 
