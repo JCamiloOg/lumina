@@ -18,8 +18,9 @@ async function main() {
                 phone: "1010101011",
                 address: "cl 12 # 12-13",
                 role: "cliente",
-            }
-        ]
+            },
+        ],
+        skipDuplicates: true
     });
 }
 
