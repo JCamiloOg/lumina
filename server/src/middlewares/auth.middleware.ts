@@ -74,8 +74,6 @@ export const AuthRoles = (...allowedRoles: Role[]): RequestHandler => {
 
         if (!req.authUser) return res.status(401).json({ message: "No autorizado." });
 
-        console.log(req.authUser);
-
         const isAllowed = allowedRoles.includes(req.authUser.role);
 
         if (!isAllowed) return res.status(403).json({ message: "No autorizado." });

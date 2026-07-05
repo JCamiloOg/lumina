@@ -12,8 +12,8 @@ const router = Router();
  * paths:
  *   /auth/login:
  *     post:
- *      tags:
- *      - Autenticación
+ *       tags:
+ *       - Autenticación
  *       summary: Inicia sesión como usuario
  *       requestBody:
  *         required: true
@@ -40,8 +40,8 @@ router.post("/login", validteSchema(loginSchema), login);
  * paths:
  *   /auth/register:
  *     post:
- *      tags:
- *      - Autenticación
+ *       tags:
+ *       - Autenticación
  *       summary: Registra un nuevo usuario
  *       requestBody:
  *         required: true
@@ -77,8 +77,8 @@ router.post("/register", register);
  * @openapi
  * paths:
  *   /auth/verify-token:
- *      tags:
- *      - Autenticación
+ *     tags:
+ *     - Autenticación
  *     get:
  *       summary: Verifica que el token sea válido
  *       responses:
@@ -92,8 +92,8 @@ router.get("/verify-token", verifyToken);
  * paths:
  *   /auth/register-admin:
  *     post:
- *      tags:
- *      - Usuarios
+ *       tags:
+ *       - Usuarios
  *       summary: Registra un nuevo administrador
  *       requestBody:
  *         required: true
