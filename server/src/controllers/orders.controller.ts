@@ -105,6 +105,9 @@ export const getOrderByUser: RequestHandler<
                     },
                 ] : undefined,
             },
+            orderBy: {
+                createdAt: "desc"
+            },
             skip,
             take: limitNumber,
         });
