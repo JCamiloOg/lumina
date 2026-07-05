@@ -8,20 +8,20 @@ export default function HeroSection() {
                 {/* Eyebrow badge */}
                 <div className="inline-flex items-center gap-2.5 rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-1.5 text-xs font-medium tracking-wide text-violet-300 backdrop-blur-md mb-8 shadow-[0_0_15px_rgba(139,92,246,0.1)]">
                     <span className="flex h-2 w-2 rounded-full bg-violet-400 animate-ping"></span>
-                    Colección Ecléctica 2026
+                    Colección para tu hogar 2026
                 </div>
 
                 {/* Heading */}
                 <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl leading-none">
-                    Diseño de Luz Líquida para tu{" "}
+                    Diseño para el interior de tu hogar
                     <span className="block mt-2 bg-clip-text text-transparent bg-linear-to-r from-violet-400 via-pink-400 to-amber-300">
-                        Santuario Digital
+                        Santuario personal
                     </span>
                 </h1>
 
                 {/* Description */}
                 <p className="mx-auto mt-8 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-slate-400">
-                    Sistemas de iluminación inteligente y objetos escultóricos minimalistas diseñados meticulosamente para transformar tu productividad, calma y atmósfera espacial.
+                    Iluminación y objetos de diseño que transformarán tu espacio único y especial
                 </p>
 
                 {/* Call to Actions */}
