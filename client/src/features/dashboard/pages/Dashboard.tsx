@@ -1,13 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
 import { useUser } from "../../../shared/hooks/useUserContext";
-import { getDashboardSummary } from "../services/dashboard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faUsers,
-    faBoxOpen,
-    faClipboardList,
-    faCircleNotch,
-} from "@fortawesome/free-solid-svg-icons";
 import AdminDashboard from "../layout/AdminDashboard";
 import ClientDashboard from "../layout/ClientDashboard";
 
