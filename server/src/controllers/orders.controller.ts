@@ -80,20 +80,56 @@ export const createOrder: RequestHandler<
 
 export const getOrderByUser: RequestHandler<
     unknown,
-    { message: string, orders?: Order[] }
+    { message: string, orders?: Order[], pagination?: { page: number, limit: number, totalPages: number } },
+    unknown,
+    { page?: string, limit?: string, search?: string }
 > = async (req, res) => {
     try {
         if (!req.authUser?.id) return res.status(400).json({ message: "No se ha iniciado sesión." });
 
+        const { page = 1, limit = 5, search } = req.query;
+        let pageNumber = Number(page);
+        let limitNumber = Number(limit);
+
+        if (isNaN(pageNumber) || pageNumber < 1) pageNumber = 1;
+        if (isNaN(limitNumber) || limitNumber < 1) limitNumber = 5;
+
+        const skip = (pageNumber - 1) * limitNumber;
+
         const orders = await prisma.order.findMany({
             where: {
-                user_id: req.authUser.id
-            }
+                user_id: req.authUser.id,
+                OR: search ? [
+                    {
+                        id: { contains: search }
+                    },
+                ] : undefined,
+            },
+            skip,
+            take: limitNumber,
         });
+
+        const totalOrders = await prisma.order.count({
+            where: {
+                user_id: req.authUser.id,
+                OR: search ? [
+                    {
+                        id: { contains: search }
+                    },
+                ] : undefined,
+            },
+        });
+
+        const totalPages = Math.ceil(totalOrders / limitNumber);
 
         return res.status(200).json({
             message: "Pedidos obtenidos exitosamente.",
-            orders
+            orders,
+            pagination: {
+                page: pageNumber,
+                limit: limitNumber,
+                totalPages
+            }
         });
     } catch (error) {
         console.error(error);
@@ -119,8 +155,6 @@ export const getAllOrders: RequestHandler<
         if (isNaN(limitNumber) || limitNumber < 1) limitNumber = 5;
 
         const skip = (pageNumber - 1) * limitNumber;
-
-        console.log(search);
 
         const orders = await prisma.order.findMany({
             skip,

@@ -35,7 +35,7 @@ export default function OrdersManagerPage() {
             if (user?.role === "administrador") {
                 res = await getAllOrders(page, limit, search);
             } else {
-                res = await getOrderByUser(user?.id || "");
+                res = await getOrderByUser();
             }
             return res.data;
         }
@@ -156,9 +156,10 @@ export default function OrdersManagerPage() {
                         <Table.Row key={idx}>
                             <Table.Cell>{idx + 1}</Table.Cell>
                             {
-                                user?.role === "administrador" && (
+                                user?.role === "administrador" &&
+                                (
                                     <Table.Cell>
-                                        <p className="cursor-pointer hover:text-blue-500 hover:underline">{order.user.name}</p>
+                                        <p className="cursor-pointer hover:text-blue-500 hover:underline">{order?.user?.name}</p>
                                     </Table.Cell>
                                 )
                             }

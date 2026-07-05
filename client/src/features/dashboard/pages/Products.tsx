@@ -71,14 +71,15 @@ export default function ProductsManagerPage() {
 
     const mutationCreateProduct = useMutation({
         mutationFn: createProduct,
-        onSuccess: () => {
+        onSuccess: (data) => {
             queryClient.invalidateQueries({
                 queryKey: ["products", page, limit, search]
             });
             productForm.reset();
             setIsOpenModal(false);
             Toast.fire({
-                title: data.message, icon: "success"
+                title: data?.data?.message,
+                icon: "success"
             });
 
         },
@@ -97,7 +98,7 @@ export default function ProductsManagerPage() {
             setIsOpenModal(false);
 
             Toast.fire({
-                title: data.data.message, icon: "success"
+                title: data?.data?.message, icon: "success"
             });
         },
         onError: (error) => {
@@ -107,12 +108,12 @@ export default function ProductsManagerPage() {
 
     const mutationDeleteProduct = useMutation({
         mutationFn: deleteProduct,
-        onSuccess: () => {
+        onSuccess: (data) => {
             queryClient.invalidateQueries({
                 queryKey: ["products", page, limit, search]
             });
             Toast.fire({
-                title: data.message, icon: "success"
+                title: data?.data?.message, icon: "success"
             });
         },
         onError: (error) => {

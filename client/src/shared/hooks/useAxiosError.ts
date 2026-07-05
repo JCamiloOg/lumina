@@ -2,18 +2,17 @@ import { isAxiosError } from "axios";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { Toast } from "../../features/landing/components/alerts";
-
 export default function useAxiosError() {
 
 
     const navigate = useNavigate();
 
-    const handleError = useCallback((error: Error) => {
+    const handleError = useCallback((error: unknown) => {
 
         if (!isAxiosError(error)) {
             return Toast.fire({
                 icon: "error",
-                title: error?.message || "Error desconocido del servidor",
+                title: error instanceof Error ? error.message : "Error desconocido del servidor",
             });
         }
 
