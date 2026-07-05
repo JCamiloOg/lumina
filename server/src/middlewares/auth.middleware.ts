@@ -1,9 +1,9 @@
-import { SECRET_KEY } from "../config/env";
-import jwt, { JsonWebTokenError } from "jsonwebtoken";
-import { UserJwtPayload } from "../@types/jwt";
+import { SECRET_KEY } from "../config/env.js";
+import jwt from "jsonwebtoken";
+import { UserJwtPayload } from "../@types/jwt.js";
 import { RequestHandler } from "express";
-import prisma from "../config/db";
-import { Role } from "../../generated/prisma/enums";
+import prisma from "../config/db.js";
+import { Role } from "@prisma/client";
 
 
 
@@ -57,7 +57,7 @@ export const AuthenticatedMiddleware: RequestHandler = async (req, res, next) =>
         next();
 
     } catch (error) {
-        if (error instanceof JsonWebTokenError) {
+        if (error instanceof jwt.JsonWebTokenError) {
 
             if (error.name === "JsonWebTokenError") return res.status(401).json({ message: "Autenticación inválida, inicie sesión de nuevo." });
 

@@ -1,7 +1,7 @@
 import http from "http";
-import { PORT } from "./config/env";
-import app from "./app";
-import prisma from "./config/db";
+import { PORT } from "./config/env.js";
+import app from "./app.js";
+import prisma from "./config/db.js";
 
 
 const server = http.createServer(app);

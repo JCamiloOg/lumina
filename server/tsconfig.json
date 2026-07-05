@@ -1,24 +1,30 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "es2022",
-    "moduleResolution": "bundler",
+    /* Destino y Entorno */
+    "target": "ES2022" /* Node.js moderno (v18+) soporta ES2022 de sobra */,
+    "module": "nodenext" /* O "NodeNext" si estás usando módulos ES nativos (import/export reales en Node) */,
     "lib": ["ES2022"],
+
+    /* Configuración de Rutas y Compilación */
+    "rootDir": "./src",
     "outDir": "./dist",
-    "rootDir": "./",
-    "strict": true,
+    "moduleResolution": "nodenext" /* O "NodeNext". CRUCIAL para que TS encuentre el cliente generado de Prisma */,
+
+    /* Interoperabilidad y Compatibilidad */
+    "esModuleInterop": true /* Vital para importar Express correctamente (import express from 'express') */,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Comprobación de Tipos Estricta (El superpoder de Prisma) */
+    "strict": true /* Activa todas las comprobaciones estrictas */,
+    "strictNullChecks": true /* Prisma devuelve 'null' en campos opcionales; necesitas esto para evitar crashes */,
     "noImplicitAny": true,
-    "noUncheckedIndexedAccess": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "types": ["node"]
+
+    /* Swagger / Decoradores (Opcional pero muy probable) */
+    "experimentalDecorators": true /* Obligatorio si usas herramientas como 'tsoa' para generar tu Swagger */,
+    "emitDecoratorMetadata": true /* Permite a las librerías de Swagger leer los tipos en tiempo de ejecución */,
+    /* Optimización de Desarrollo */
+    "skipLibCheck": true /* Sáltate la revisión de tipos de node_modules. Te ahorrará dolores de cabeza con Prisma */
   },
-  "include": [
-    "src/**/*",
-    "prisma.config.ts",
-    "prisma/**/*",
-    "generated/prisma/**/*"
-  ],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

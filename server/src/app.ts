@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { CORS_ORIGIN, NODE_ENV } from "./config/env";
-import routes from "./routes/index.routes";
+import { CORS_ORIGIN, NODE_ENV } from "./config/env.js";
+import routes from "./routes/index.routes.js";
 import swaggerUi from "swagger-ui-express";
-import { swaggerSpec } from "./config/swagger";
+import { swaggerSpec } from "./config/swagger.js";
 const app = express();
 
 app.use(express.json());

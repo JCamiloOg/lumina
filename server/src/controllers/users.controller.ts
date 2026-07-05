@@ -1,10 +1,10 @@
 import { RequestHandler } from "express";
 import { compare, hash } from "bcrypt";
 import jwt from "jsonwebtoken";
-import { SECRET_KEY } from "../config/env";
-import prisma from "../config/db";
-import { User } from "../../generated/prisma/client";
-import { UserJwtPayload } from "../@types/jwt";
+import { SECRET_KEY } from "../config/env.js";
+import prisma from "../config/db.js";
+import { User } from "@prisma/client";
+import { UserJwtPayload } from "../@types/jwt.js";
 
 
 export const login: RequestHandler<

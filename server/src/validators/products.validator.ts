@@ -1,7 +1,7 @@
 
 import z from "zod";
-import { Product } from "../../generated/prisma/client";
 import { Decimal } from "@prisma/client/runtime/client";
+import { Product } from "@prisma/client";
 
 export const createProductSchema: z.ZodType<{ body: Omit<Product, "id" | "status" | "createdAt">, params?: unknown, query?: unknown }> = z.object({
     body: z.object({

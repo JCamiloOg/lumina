@@ -1,7 +1,7 @@
-import authRoutes from "./auth.routes";
-import usersRoutes from "./users.routes";
-import productsRoutes from "./products.routes";
-import ordersRoutes from "./orders.routes";
+import authRoutes from "./auth.routes.js";
+import usersRoutes from "./users.routes.js";
+import productsRoutes from "./products.routes.js";
+import ordersRoutes from "./orders.routes.js";
 import { Router } from "express";
 
 const router = Router();

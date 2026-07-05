@@ -1,5 +1,5 @@
+import { User } from "@prisma/client";
 import z from "zod";
-import { User } from "../../generated/prisma/client";
 
 type LoginInput = Pick<User, "email" | "password">;
 

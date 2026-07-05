@@ -1,4 +1,5 @@
-import prisma from "../src/config/db";
+import prisma from "./config/db.js";
+
 
 async function main() {
     await prisma.user.createMany({
@@ -6,7 +7,7 @@ async function main() {
             {
                 name: "Admin",
                 email: "admin@example.com",
-                password: "123prueba",
+                password: "$2b$10$nFy48DR5zN./tjdrWrYSSeX2OWlhliJCDOBJWi7wIDrokfbUkXvYK",
                 phone: "1010101010",
                 address: "cl 12 # 12-12",
                 role: "administrador",
@@ -14,7 +15,7 @@ async function main() {
             {
                 name: "Cliente",
                 email: "cliente@example.com",
-                password: "123prueba",
+                password: "$2b$10$nFy48DR5zN./tjdrWrYSSeX2OWlhliJCDOBJWi7wIDrokfbUkXvYK",
                 phone: "1010101011",
                 address: "cl 12 # 12-13",
                 role: "cliente",
@@ -24,7 +25,6 @@ async function main() {
     });
 }
 
-main()
-    .finally(async () => {
-        await prisma.$disconnect();
-    });
+main().finally(async () => {
+    await prisma.$disconnect();
+});

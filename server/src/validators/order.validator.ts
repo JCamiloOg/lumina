@@ -1,5 +1,5 @@
+import { StatusOrder } from "@prisma/client";
 import z from "zod";
-import { StatusOrder } from "../../generated/prisma/enums";
 
 type CartItem = { idProduct: number, quantity: number, name: string };
 

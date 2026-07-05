@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
-import { Order, OrderDetail, StatusOrder, User } from "../../generated/prisma/client";
-import prisma from "../config/db";
-import { Decimal } from "@prisma/client/runtime/client";
+import prisma from "../config/db.js";
+import { Decimal } from "@prisma/client/runtime/client.js";
+import { Order, OrderDetail, StatusOrder, User } from "@prisma/client";
 
 
 export const createOrder: RequestHandler<

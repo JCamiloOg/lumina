@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
-import { Product } from "../../generated/prisma/client";
-import prisma from "../config/db";
+import { Product } from "@prisma/client";
+import prisma from "../config/db.js";
 
 
 export const getProducts: RequestHandler<
