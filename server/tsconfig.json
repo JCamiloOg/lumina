@@ -4,7 +4,7 @@
     "target": "ES2022" /* Node.js moderno (v18+) soporta ES2022 de sobra */,
     "module": "nodenext" /* O "NodeNext" si estás usando módulos ES nativos (import/export reales en Node) */,
     "lib": ["ES2022"],
-
+    "removeComments": false,
     /* Configuración de Rutas y Compilación */
     "rootDir": "./src",
     "outDir": "./dist",
